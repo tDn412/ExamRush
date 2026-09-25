@@ -2,7 +2,8 @@
   "name": "ExamRush",
   "private": true,
   "scripts": {
-    "build": "npm ci --prefix frontend && npm run build --prefix frontend"
+    "build": "npm ci --prefix frontend && npm run build --prefix frontend",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "wrangler": "4.140.0"
