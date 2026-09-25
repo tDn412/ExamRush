@@ -120,6 +120,18 @@ On startup the API creates tables and seeds demo data automatically.
 
 ## 🚀 Quick Start
 
+### Deploy the frontend with Cloudflare Pages
+
+This repository keeps the Vite app in `frontend/`. For a Cloudflare Pages project configured at the repository root, use:
+
+| Setting | Value |
+| --- | --- |
+| Root directory | `/` (repository root) |
+| Build command | `npm run build` |
+| Build output directory | `frontend/dist` |
+
+The root `package.json` installs the frontend from its own lockfile and runs the Vite production build. Add `VITE_API_URL` as a Pages build environment variable with the public API base URL, including `/api` (for example, `https://your-api.example.com/api`). The backend is a separate FastAPI service; Cloudflare Pages only publishes the frontend. Set the backend's `FRONTEND_URL` to the Pages site URL and set a strong `SECRET_KEY` in the backend host.
+
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/), or Docker Engine with the Compose plugin
