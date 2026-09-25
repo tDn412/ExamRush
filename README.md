@@ -120,17 +120,17 @@ On startup the API creates tables and seeds demo data automatically.
 
 ## 🚀 Quick Start
 
-### Deploy the frontend with Cloudflare Pages
+### Deploy the frontend with Cloudflare Workers Builds
 
-This repository keeps the Vite app in `frontend/`. For a Cloudflare Pages project configured at the repository root, use:
+This repository keeps the Vite app in `frontend/`. The root `package.json` installs the frontend from its own lockfile and runs the Vite production build; `wrangler.jsonc` publishes `frontend/dist` as Worker Static Assets and routes unknown paths to the React SPA.
 
 | Setting | Value |
 | --- | --- |
 | Root directory | `/` (repository root) |
 | Build command | `npm run build` |
-| Build output directory | `frontend/dist` |
+| Deploy command | `npx wrangler deploy` |
 
-The root `package.json` installs the frontend from its own lockfile and runs the Vite production build. Add `VITE_API_URL` as a Pages build environment variable with the public API base URL, including `/api` (for example, `https://your-api.example.com/api`). The backend is a separate FastAPI service; Cloudflare Pages only publishes the frontend. Set the backend's `FRONTEND_URL` to the Pages site URL and set a strong `SECRET_KEY` in the backend host.
+Add `VITE_API_URL` as a Worker build environment variable with the public API base URL, including `/api` (for example, `https://your-api.example.com/api`). This Worker publishes only the frontend; the FastAPI backend, PostgreSQL, and optional Redis need separate hosting. Set the backend's `FRONTEND_URL` to the Worker URL and set a strong `SECRET_KEY` in the backend host.
 
 ### Prerequisites
 
