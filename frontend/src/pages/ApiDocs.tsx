@@ -7,7 +7,7 @@ type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 type Endpoint = { method: Method; path: string; desc: string; auth: boolean }
 type Group = { titleKey: 'apidoc.groupAuth' | 'apidoc.groupExams' | 'apidoc.groupAttempts'; icon: typeof LuKeyRound; endpoints: Endpoint[] }
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
+const API_BASE = import.meta.env.VITE_API_URL || `${window.location.origin}/api`
 const SWAGGER_URL = API_BASE.replace(/\/api\/?$/, '') + '/docs'
 
 const methodStyle: Record<Method, string> = {

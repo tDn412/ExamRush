@@ -22,3 +22,6 @@ frontend/.env
 Thumbs.db
 .idea/
 .vscode/
+
+# Wrangler / Cloudflare
+.wrangler/
